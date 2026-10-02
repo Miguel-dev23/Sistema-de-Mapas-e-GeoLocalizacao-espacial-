@@ -1,0 +1,172 @@
+:root {
+    --mesa: #d9d2c0;
+    --mesa-escura: #c4bba3;
+    --corpo: #4e5a3c;
+    --corpo-escuro: #3a442c;
+    --lcd: #b9c79a;
+    --lcd-texto: #1f2a14;
+    --botao: #e2a23b;
+    --texto: #2b2a24;
+    --erro: #8f2d1f;
+    --ok: #2f5d2a;
+    --mono: "Consolas", "Menlo", "DejaVu Sans Mono", monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+    background: var(--mesa);
+    color: var(--texto);
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+.topo { text-align: center; padding: 28px 16px 8px; }
+.topo h1 { font-size: 2rem; letter-spacing: .02em; }
+.topo p { color: #5a564a; }
+
+/* Mesa: papel e lixeira ficam em cantos opostos */
+.mesa {
+    position: relative;
+    width: min(94%, 900px);
+    min-height: 460px;
+    margin: 16px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--mesa-escura);
+    border-radius: 14px;
+    padding: 32px 16px;
+}
+
+.item {
+    position: absolute;
+    width: 112px;
+    height: 112px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none;
+}
+.papel   { top: 20px; left: 20px; background: #f6efd2; border: 2px dashed #a8842a; cursor: grab; }
+.lixeira { bottom: 20px; right: 20px; background: #ecd2cb; border: 2px dashed #8f2d1f; transition: transform .15s, background .15s; }
+.papel:active { cursor: grabbing; }
+.papel.arrastando { opacity: .4; }
+.papel.sumiu { animation: sumir .35s forwards; }
+.lixeira.sobre { background: #e4a99c; transform: scale(1.1); }
+.lixeira.balanca { animation: balanca .4s; }
+
+.emoji { font-size: 44px; line-height: 1; }
+.rotulo { font-size: .8rem; font-weight: 600; margin-top: 6px; }
+
+.papel:focus-visible, .botao-gps:focus-visible {
+    outline: 3px solid #1d4ed8;
+    outline-offset: 3px;
+}
+
+@keyframes sumir { to { transform: scale(.2) rotate(25deg); opacity: 0; } }
+@keyframes balanca {
+    25% { transform: rotate(-8deg); } 50% { transform: rotate(8deg); }
+    75% { transform: rotate(-4deg); }
+}
+
+/* Aparelho GPS */
+.gps {
+    width: min(100%, 320px);
+    background: var(--corpo);
+    border-radius: 26px 26px 36px 36px;
+    padding: 18px 18px 22px;
+    box-shadow: 0 10px 0 var(--corpo-escuro), 0 18px 28px rgba(0,0,0,.28);
+}
+.gps-marca {
+    color: #cfd6bd;
+    font-family: var(--mono);
+    font-size: .8rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.lcd {
+    background: var(--lcd);
+    color: var(--lcd-texto);
+    font-family: var(--mono);
+    border-radius: 8px;
+    padding: 14px;
+    border: 4px solid var(--corpo-escuro);
+    box-shadow: inset 0 2px 6px rgba(0,0,0,.35);
+    min-height: 190px;
+}
+.lcd-linha { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 8px; }
+.lcd-rotulo { font-size: .75rem; opacity: .75; }
+.lcd-valor { font-size: 1.35rem; font-weight: 700; }
+.lcd-pequena .lcd-valor { font-size: 1rem; }
+.lcd-status {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(31,42,20,.35);
+    font-size: .8rem;
+    line-height: 1.4;
+}
+.lcd-status.erro { color: var(--erro); font-weight: 700; }
+
+.botao-gps {
+    display: block;
+    width: 100%;
+    margin-top: 16px;
+    padding: 12px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--botao);
+    color: #2b1d00;
+    font-weight: 700;
+    font-size: .95rem;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #a8731c;
+}
+.botao-gps:hover { filter: brightness(1.06); }
+.botao-gps:active { transform: translateY(3px); box-shadow: 0 1px 0 #a8731c; }
+.botao-gps:disabled { opacity: .7; cursor: wait; }
+
+/* Painéis */
+.painel {
+    width: min(94%, 900px);
+    margin: 14px auto;
+}
+.ultima {
+    background: #fff;
+    border-left: 6px solid var(--corpo);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-weight: 600;
+}
+.mensagem { min-height: 24px; margin-top: 8px; font-weight: 600; color: var(--ok); }
+.mensagem.erro { color: var(--erro); }
+
+#map { height: 400px; width: 100%; border-radius: 12px; border: 4px solid var(--corpo); }
+.leaflet-container img { max-width: none !important; }
+.dica { margin-top: 8px; font-size: .85rem; color: #5a564a; }
+
+footer { text-align: center; padding: 24px; color: #5a564a; font-size: .9rem; }
+
+.fantasma {
+    position: fixed;
+    z-index: 1000;
+    pointer-events: none;
+    font-size: 44px;
+    transform: translate(-50%, -50%);
+}
+
+@media (max-width: 640px) {
+    .mesa { min-height: 560px; align-items: center; }
+    .item { width: 92px; height: 92px; }
+    .emoji { font-size: 36px; }
+    #map { height: 320px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+}

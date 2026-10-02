@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persistência PFE · Mini GPS</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+    <link rel="stylesheet" href="./CSS/style.css">
+</head>
+<body>
+
+<header class="topo">
+    <h1>Mini GPS</h1>
+    <p>Geolocation, localStorage e Drag &amp; Drop</p>
+</header>
+
+<main class="mesa" id="mesa">
+
+    <!-- Papel: posição no canto superior esquerdo da mesa -->
+    <div id="papel" class="item papel" draggable="true" tabindex="0"
+         role="button" aria-label="Papel: arraste até a lixeira para apagar a localização salva">
+        <span class="emoji">📝</span>
+        <span class="rotulo">Papel</span>
+    </div>
+
+    <!-- Aparelho GPS -->
+    <section class="gps" aria-labelledby="gps-titulo">
+        <div class="gps-marca" id="gps-titulo">PFE-GPS</div>
+
+        <div class="lcd" aria-live="polite">
+            <div class="lcd-linha">
+                <span class="lcd-rotulo">LAT</span>
+                <span class="lcd-valor" id="lat">--.------</span>
+            </div>
+            <div class="lcd-linha">
+                <span class="lcd-rotulo">LON</span>
+                <span class="lcd-valor" id="lon">--.------</span>
+            </div>
+            <div class="lcd-linha lcd-pequena">
+                <span class="lcd-rotulo">PRECISÃO</span>
+                <span class="lcd-valor" id="precisao">-- m</span>
+            </div>
+            <p class="lcd-status" id="status">Aguardando sinal. Pressione o botão.</p>
+        </div>
+
+        <button id="btnLocalizacao" class="botao-gps" type="button">Atualizar localização</button>
+    </section>
+
+    <!-- Lixeira: posição no canto inferior direito da mesa -->
+    <div id="lixeira" class="item lixeira" aria-label="Lixeira: solte o papel aqui">
+        <span class="emoji">🗑️</span>
+        <span class="rotulo">Lixeira</span>
+    </div>
+</main>
+
+<section class="painel" aria-label="Última localização salva">
+    <p id="ultimaLocalizacao" class="ultima">Nenhuma localização salva ainda.</p>
+    <p id="mensagem" class="mensagem" role="status"></p>
+</section>
+
+<section class="painel painel-mapa">
+    <div id="map" aria-label="Mapa"></div>
+    <p class="dica">Arraste o 📝 até a 🗑️ para apagar a localização salva. No teclado: foque o papel e pressione Enter.</p>
+</section>
+
+<footer>Atividade 4 · Persistência PFE</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script src="./JS/script.js"></script>
+</body>
+</html>
