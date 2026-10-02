@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persistência PFE - GPS</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIINfQ3Yk8+q9g7K5M7c2x4r5Qm6xwJ0h8M="
+          crossorigin=""/>
+
+    <link rel="stylesheet" href="./CSS/style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>📍 Meu Mini Mapa</h1>
+        <p>Geolocation, LocalStorage e Drag &amp; Drop</p>
+    </header>
+
+    <main class="container">
+        <section class="gps-card">
+            <div class="gps-icon">📡</div>
+            <div>
+                <h2>Minha localização</h2>
+                <p id="coordenadas">Buscando sua localização...</p>
+            </div>
+        </section>
+
+        <section class="ultima-localizacao">
+            <h2>💾 Última localização salva</h2>
+            <p id="ultimaLocalizacao">Nenhuma localização salva ainda.</p>
+        </section>
+
+        <button id="btnLocalizacao" class="location-button">
+            📍 Atualizar minha localização
+        </button>
+
+        <section class="map-container">
+            <h2>🗺️ Mapa</h2>
+            <div id="map"></div>
+        </section>
+
+        <section class="drag-area">
+            <h2>🧩 Limpar localização</h2>
+            <p>Arraste o papel 📝 até a lixeira 🗑️ para apagar a localização salva.</p>
+
+            <div class="drag-container">
+                <div id="papel" class="papel" draggable="true">
+                    📝
+                    <span>Papel</span>
+                </div>
+
+                <div id="lixeira" class="lixeira">
+                    🗑️
+                    <span>Lixeira</span>
+                </div>
+            </div>
+
+            <p id="mensagem" class="mensagem"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Atividade 4 - Persistência PFE</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="./JS/script.js"></script>
+</body>
+</html>

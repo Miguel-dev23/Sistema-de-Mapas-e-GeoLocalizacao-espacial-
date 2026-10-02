@@ -1,0 +1,221 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f1f5f9;
+    color: #1e293b;
+    min-height: 100vh;
+}
+
+.header {
+    background: #2563eb;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.header h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.header p {
+    font-size: 16px;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+.gps-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: 20px;
+}
+
+.gps-icon {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #dbeafe;
+    border-radius: 50%;
+    font-size: 35px;
+}
+
+.gps-card h2 {
+    margin-bottom: 8px;
+}
+
+#coordenadas {
+    color: #2563eb;
+    font-weight: bold;
+}
+
+.ultima-localizacao {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: 20px;
+}
+
+.ultima-localizacao h2 {
+    margin-bottom: 10px;
+}
+
+#ultimaLocalizacao {
+    color: #475569;
+}
+
+.location-button {
+    display: block;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    background: #2563eb;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-bottom: 25px;
+}
+
+.location-button:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+.map-container {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: 25px;
+}
+
+.map-container h2 {
+    margin-bottom: 15px;
+}
+
+#map {
+    width: 100%;
+    height: 400px;
+    border-radius: 10px;
+}
+
+.drag-area {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.drag-area h2 {
+    margin-bottom: 10px;
+}
+
+.drag-area p {
+    color: #64748b;
+}
+
+.drag-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 30px;
+    min-height: 180px;
+}
+
+.papel {
+    width: 110px;
+    height: 110px;
+    background: #fef3c7;
+    border: 3px dashed #f59e0b;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 45px;
+    cursor: grab;
+    user-select: none;
+    transition: 0.3s;
+}
+
+.papel span,
+.lixeira span {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.papel:hover {
+    transform: scale(1.05);
+}
+
+.lixeira {
+    width: 120px;
+    height: 120px;
+    background: #fee2e2;
+    border: 3px dashed #ef4444;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    transition: 0.3s;
+}
+
+.lixeira.drag-over {
+    background: #fecaca;
+    transform: scale(1.1);
+}
+
+.mensagem {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #16a34a !important;
+}
+
+footer {
+    text-align: center;
+    background: #1e293b;
+    color: white;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+@media (max-width: 600px) {
+    .header h1 {
+        font-size: 25px;
+    }
+
+    .gps-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .drag-container {
+        gap: 30px;
+    }
+
+    #map {
+        height: 300px;
+    }
+}
